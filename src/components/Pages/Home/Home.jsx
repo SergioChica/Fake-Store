@@ -135,7 +135,7 @@ export const Home = () => {
                             <p className='cursor-pointer text-[18px] font-medium'>De menor a mayor</p>
                         </div>
                     </div>
-                    <div className=' absolute bottom-[10%] w-full h-[8%] flex justify-center items-center '>
+                    <div className=' absolute bottom-[10%] w-full h-[8%] flex justify-center items-center gap-3 '>
                         <button className=' w-[20%] h-full bg-gray-200 rounded-[30px] font-semibold md:w-[30%] ' onClick={() => setViewMenu(false)} >Aceptar</button>
                     </div>
                 </div>
