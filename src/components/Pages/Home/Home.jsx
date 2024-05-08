@@ -13,6 +13,18 @@ export const Home = () => {
     const [isFixed, setIsFixed] = useState(false);
     const [isSmallScreen, setIsSmallScreen] = useState(false);
     const [viewMenu, setViewMenu] = useState(false);
+    const [dataProduct, setDataProduct] = useState([])
+
+    useEffect(() => {
+        fetch('https://fakestoreapi.com/products')
+            .then(res=>res.json())
+            .then(data=> {
+                setDataProduct(data)
+            })
+        .catch(error=> {
+            console.log('Error fetch data',error)
+        })
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -94,16 +106,15 @@ export const Home = () => {
                             </section>
                         </div>
                         <section className={isFixed ? 'w-full flex flex-wrap gap-[5%] 2xl:gap-[5%] pl-[200px] xl:gap-[5%] lg:pl-0 md:gap[6%] ' : ' w-full gap-[5%] 2xl:w-[1014px] flex flex-wrap 2xl:gap-[5%] xl:gap-[5%] md:gap[6%] '} >
-                            <Cards />
-                            <Cards />
-                            <Cards />
-                            <Cards />
-                            <Cards />
-                            <Cards />
-                            <Cards />
-                            <Cards />
-                            <Cards />
-                            <Cards />
+                            {dataProduct.map(product => (
+                                <Cards
+                                    key={product.id}
+                                    title={product.title}
+                                    category={product.category}
+                                    price={product.price}
+                                    img={product.image}
+                                />
+                            ))}
                         </section>
                     </div>
                 </div>
