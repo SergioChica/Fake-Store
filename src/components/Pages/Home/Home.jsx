@@ -91,7 +91,7 @@ export const Home = () => {
                     </div>
                     <div className=' h-full w-full flex flex-1 '>
                         <div className={isSmallScreen ? 'hidden' : 'block'}>
-                            <section className={isFixed ? 'w-[200px] h-full bg-white font-medium flex flex-1 flex-col gap-[30px] fixed top-[10px] ' : 'w-[200px] bg-white font-medium flex flex-col gap-[30px] pt-[10px] '} >
+                            <section className={isFixed ? 'w-[200px] h-full bg-white font-medium flex flex-1 flex-col gap-[30px] fixed top-[50px] ' : 'w-[200px] bg-white font-medium flex flex-col gap-[30px] pt-[40px] '} >
                                 <div className=' flex flex-col gap-[5px] '>
                                     <h2 className='font-bold'>Filtrar por:</h2>
                                     <p className='cursor-pointer'>Categoria</p>
@@ -105,8 +105,13 @@ export const Home = () => {
                                 </div>
                             </section>
                         </div>
+
+                        <section className={isFixed ? 'w-full flex flex-wrap gap-[5.3%] 2xl:gap-[5%] pl-[200px] xl:gap-[5%] lg:pl-0 md:gap[6%] ' : ' w-full gap-[5.3%] 2xl:w-full flex flex-wrap 2xl:gap-[5%] xl:gap-[5%] md:gap[6%] '} >
+                        {dataProduct.map(product => (
+
                         <section className={isFixed ? 'w-full flex flex-wrap gap-[5%] 2xl:gap-[5%] pl-[200px] xl:gap-[5%] lg:pl-0 md:gap[6%] ' : ' w-full gap-[5%] 2xl:w-[1014px] flex flex-wrap 2xl:gap-[5%] xl:gap-[5%] md:gap[6%] '} >
                             {dataProduct.map(product => (
+
                                 <Cards
                                     key={product.id}
                                     title={product.title}
@@ -114,13 +119,17 @@ export const Home = () => {
                                     price={product.price}
                                     img={product.image}
                                 />
+
+                            )).splice(1,21)}
+
                             ))}
+
                         </section>
                     </div>
                 </div>
             </Main>
-            <div className={viewMenu ? 'fixed top-0 left-0 w-full h-full flex items-end bg-[#00000080] z-10' : 'hidden' }>
-                <div className='w-full h-full bg-white flex justify-center pt-[60px] animate-filter relative '>
+            <div className={viewMenu ? 'fixed top-0 left-0 w-full h-full flex justify-center items-center bg-[#00000080] z-10' : 'hidden' }>
+                <div className='w-[60%] h-[60%] bg-white flex justify-center pt-[60px] animate-filter relative  rounded-[15px] '>
                     <IoClose fontSize={50} className='absolute top-[20px] right-[5%] cursor-pointer ' onClick={() => setViewMenu(false)} /> 
                     <div className=' w-[100%] flex flex-col gap-[30px] pl-[60px] '>
                         <div className=' flex flex-col gap-[5px] '>
@@ -135,10 +144,13 @@ export const Home = () => {
                             <p className='cursor-pointer text-[18px] font-medium'>De menor a mayor</p>
                         </div>
                     </div>
-                    <div className=' absolute bottom-[10%] w-full h-[8%] flex justify-center items-center '>
+                    <div className=' absolute bottom-[10%] w-full h-[8%] flex justify-center items-center gap-3 '>
                         <button className=' w-[20%] h-full bg-gray-200 rounded-[30px] font-semibold md:w-[30%] ' onClick={() => setViewMenu(false)} >Aceptar</button>
                     </div>
                 </div>
+            </div>
+            <div className='absolute bg-green-100 w-0 h-0 border-l-[200px]  '>
+
             </div>
         </>
     )
