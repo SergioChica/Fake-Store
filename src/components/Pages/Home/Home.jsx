@@ -105,8 +105,13 @@ export const Home = () => {
                                 </div>
                             </section>
                         </div>
+
                         <section className={isFixed ? 'w-full flex flex-wrap gap-[5.3%] 2xl:gap-[5%] pl-[200px] xl:gap-[5%] lg:pl-0 md:gap[6%] ' : ' w-full gap-[5.3%] 2xl:w-full flex flex-wrap 2xl:gap-[5%] xl:gap-[5%] md:gap[6%] '} >
                         {dataProduct.map(product => (
+
+                        <section className={isFixed ? 'w-full flex flex-wrap gap-[5%] 2xl:gap-[5%] pl-[200px] xl:gap-[5%] lg:pl-0 md:gap[6%] ' : ' w-full gap-[5%] 2xl:w-[1014px] flex flex-wrap 2xl:gap-[5%] xl:gap-[5%] md:gap[6%] '} >
+                            {dataProduct.map(product => (
+
                                 <Cards
                                     key={product.id}
                                     title={product.title}
@@ -114,7 +119,11 @@ export const Home = () => {
                                     price={product.price}
                                     img={product.image}
                                 />
+
                             )).splice(1,21)}
+
+                            ))}
+
                         </section>
                     </div>
                 </div>
