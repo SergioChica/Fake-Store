@@ -17,13 +17,13 @@ export const Home = () => {
 
     useEffect(() => {
         fetch('https://fakestoreapi.com/products')
-            .then(res=>res.json())
-            .then(data=> {
+            .then(res => res.json())
+            .then(data => {
                 setDataProduct(data)
             })
-        .catch(error=> {
-            console.log('Error fetch data',error)
-        })
+            .catch(error => {
+                console.log('Error fetch data', error)
+            })
     }, []);
 
     useEffect(() => {
@@ -51,13 +51,13 @@ export const Home = () => {
                 setIsSmallScreen(false); // Establecer como pantalla grande
             }
         };
-    
+
         // Verificar el tamaño de la ventana al principio
         handleResize();
-    
+
         // Agregamos un listener para detectar cambios en el tamaño de la pantalla
         window.addEventListener('resize', handleResize);
-    
+
         // Limpia el listener cuando el componente se desmonta
         return () => {
             window.removeEventListener('resize', handleResize);
@@ -83,7 +83,7 @@ export const Home = () => {
                 </div>
             </Header>
             <Main>
-                <div className='h-full w-[90%] flex flex-1 flex-col'>
+                <div className='min-h-full h-auto w-[90%] flex flex-1 flex-col'>
                     <div className={isSmallScreen ? 'block' : 'hidden'}>
                         <div className={isFixed ? 'h-[60px] w-[90%] flex justify-end items-center font-medium fixed bg-white top-0' : 'h-[60px] w-full flex justify-end items-center font-medium bg-white'}>
                             <button className=' h-[60%] w-[15%] bg-gray-200 rounded-[30px] md:w-[30%] ' onClick={() => setViewMenu(true)}>Ordenar por</button>
@@ -105,32 +105,26 @@ export const Home = () => {
                                 </div>
                             </section>
                         </div>
+                        <section className={isFixed ? 'w-full flex flex-wrap gap-x-[5.3%] 2xl:gap-x-[5%] pl-[200px] xl:gap-x-[5%] lg:pl-0 md:gapx-[6%] ' : ' w-full  gap-x-[5.3%] 2xl:w-full flex flex-wrap 2xl:gap-x-[5%] xl:gap-x-[5%] md:gapx-[6%] '} >
 
-                        <section className={isFixed ? 'w-full flex flex-wrap gap-[5.3%] 2xl:gap-[5%] pl-[200px] xl:gap-[5%] lg:pl-0 md:gap[6%] ' : ' w-full gap-[5.3%] 2xl:w-full flex flex-wrap 2xl:gap-[5%] xl:gap-[5%] md:gap[6%] '} >
-                        {dataProduct.map(product => (
-
-                        <section className={isFixed ? 'w-full flex flex-wrap gap-[5%] 2xl:gap-[5%] pl-[200px] xl:gap-[5%] lg:pl-0 md:gap[6%] ' : ' w-full gap-[5%] 2xl:w-[1014px] flex flex-wrap 2xl:gap-[5%] xl:gap-[5%] md:gap[6%] '} >
                             {dataProduct.map(product => (
-
                                 <Cards
                                     key={product.id}
-                                    title={product.title}
+                                    title={product.title.split(" ").slice(0, 1)}
                                     category={product.category}
+                                    description={product.description}
                                     price={product.price}
                                     img={product.image}
                                 />
 
-                            )).splice(1,21)}
-
-                            ))}
-
+                            )).splice(1, 21)}
                         </section>
                     </div>
                 </div>
             </Main>
-            <div className={viewMenu ? 'fixed top-0 left-0 w-full h-full flex justify-center items-center bg-[#00000080] z-10' : 'hidden' }>
+            <div className={viewMenu ? 'fixed top-0 left-0 w-full h-full flex justify-center items-center bg-[#00000080] z-10' : 'hidden'}>
                 <div className='w-[60%] h-[60%] bg-white flex justify-center pt-[60px] animate-filter relative  rounded-[15px] '>
-                    <IoClose fontSize={50} className='absolute top-[20px] right-[5%] cursor-pointer ' onClick={() => setViewMenu(false)} /> 
+                    <IoClose fontSize={50} className='absolute top-[20px] right-[5%] cursor-pointer ' onClick={() => setViewMenu(false)} />
                     <div className=' w-[100%] flex flex-col gap-[30px] pl-[60px] '>
                         <div className=' flex flex-col gap-[5px] '>
                             <h2 className='font-bold text-[24px]'>Filtrar por:</h2>

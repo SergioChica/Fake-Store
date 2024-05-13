@@ -23,12 +23,17 @@ export default {
     },
     extend: {
       animation : {
-        filter: 'filter 1s forwards '
+        filter: 'filter 1s forwards ',
+        cards: 'cards 1s forwards '
       },
       keyframes: {
         filter: {
           '0%' : {transform: 'translateY(100%)'},
           '100%': {transform: 'translateY(0)'}
+        },
+        cards: {
+          '0%' : {transform: 'translateY(20%)', opacity: '0'},
+          '100%': {transform: 'translateY(0)', opacity: '1' }
         }
       }
     },
