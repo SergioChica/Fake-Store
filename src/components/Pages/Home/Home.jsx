@@ -5,7 +5,7 @@ import { Main } from "../../Layouts/Main/Main";
 
 import { Cards } from '../../Cards/Cards';
 
-import { FaSearch } from "react-icons/fa";
+import { FaSearch,FaShoppingCart  } from "react-icons/fa";
 import { IoClose } from "react-icons/io5"
 
 export const Home = () => {
@@ -71,12 +71,17 @@ export const Home = () => {
                     <div className='font-bold text-[24px] '>
                         <h1>Lumière</h1>
                     </div>
-                    <div className=' '>
+                    <div className='flex items-center gap-x-3 '>
                         <div className='h-[40px] flex items-center gap-[7px] bg-gray-200 p-[15px] pl-0 rounded-[30px] '>
                             <div className='h-[40px] w-[40px] flex justify-center items-center rounded-[30px] hover:bg-gray-300 cursor-pointer '>
                                 <button className=' '><FaSearch /></button>
                             </div>
                             <input type="text" className=' bg-gray-200 border-none focus:outline-none  ' />
+                        </div>
+                        <div className='flex w-[100px] h-[40px] justify-center items-center gap-x-2 bg-gray-200 rounded-[30px]'>  
+                        <FaShoppingCart fontSize={28} className='cursor-pointer '/>
+                        <hr className='h-full w-[2px] bg-gray-100 '/>         
+                        <p className='w-[24px] '>100</p>
                         </div>
                         {/* Space for more options */}
                     </div>
